@@ -1,11 +1,10 @@
-
-local b =13846111318 
+ 
 
 
 
 local Check = {
-	["Logo"] = b, --โลโก้ใส่แค่เลข
-	["Name Hub"] = Axiz Hub --ชื่อค่าย
+	["Logo"] = 13846111318, --โลโก้ใส่แค่เลข
+	["Name Hub"] = "Axiz Hub" --ชื่อค่าย
 }
 
 _G.Mute = false --เปิดปิดเสียง ui
@@ -1903,3 +1902,5 @@ end)
     end
     return tabs
 end
+
+local Win = library:Evil(Check["Name Hub"], Check["Logo"])
