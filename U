@@ -1904,3 +1904,42 @@ end)
 end
 
 local Win = library:Evil(Check["Name Hub"], Check["Logo"])
+local Win = Win:CraftTab('Main')
+local Main1 = Win:CraftPage('Main',1)
+local Main2 = Win:CraftPage('Misc',2)
+
+-- Dropdown เพื่อเลือกโหมดการฟาร์ม
+_G.Farm = false
+_G.FarmMode = "Normal"
+
+Main1:Dropdown("ModeFarm",{"Normal", "Fast", "Gold"}, "Normal",function(value)
+    _G.FarmMode = value
+end)
+
+Main1:Toggle('Auto Farm', false, function(Value)
+    _G.Farm = Value
+
+    if _G.Farm then
+        Highlight(lp)  -- เปิดไฮไลท์ตัวละคร
+        task.spawn(function()
+            while _G.Farm do
+                if _G.FarmMode == "Normal" then
+                    new()
+                    task.wait(15)
+                elseif _G.FarmMode == "Fast" then
+                    Tp()
+                    task.wait(15)
+                elseif _G.FarmMode == "Gold" then
+                    Gold()
+                    task.wait(10)
+                end
+            end
+        end)
+    else
+        -- ปิดไฮไลท์เมื่อปิด AutoFarm
+        local highlight = Storage:FindFirstChild(lp.Name)
+        if highlight then
+            highlight:Destroy()
+        end
+    end
+end) 
