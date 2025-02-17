@@ -1,12 +1,11 @@
 
-local a = AxizHub
 local b =13846111318
 
 
 
 local Check = {
 	["Logo"] = b, --โลโก้ใส่แค่เลข
-	["Name Hub"] = a --ชื่อค่าย
+	["Name Hub"] = Axiz Hub --ชื่อค่าย
 }
 
 _G.Mute = false --เปิดปิดเสียง ui
